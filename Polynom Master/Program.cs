@@ -11,6 +11,7 @@ namespace Polynom_Master
             int NumberOfCoaff = ReadCoaff(cofarr);
         }
 
+        //takes the input
         public static int ReadCoaff(int[] cofarr)
         {
             string str;
@@ -39,6 +40,17 @@ namespace Polynom_Master
                 number = input1 * input1;
             }
             return number;
+        }
+
+        //takes the x
+        public static int ReadInt(string WhatToPrint)
+        {
+            Console.WriteLine(WhatToPrint);
+            return int.Parse(Console.ReadLine());
+        }
+
+        public static int CalPoli(int[] cofarr, int i, int x)
+        {
         }
     }
 }
