@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace A_to_the_power_of_B
+﻿namespace A_to_the_power_of_B
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("input a");
-            int input1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("input b");
-            int input2 = int.Parse(Console.ReadLine());
-            int number = 0;
-            for (int i = 0; i < input2; i++)
+            System.Console.WriteLine(Mypow(2, 1));
+        }
+
+        public static int Mypow(int a, int b)
+        {
+            int num = 1;
+            for (int i = 0; i < b; i++)
             {
-                number = input1 * input1;
+                num = a * num;
             }
-            Console.WriteLine(number);
+            return num;
         }
     }
 }

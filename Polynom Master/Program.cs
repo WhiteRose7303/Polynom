@@ -6,9 +6,35 @@ namespace Polynom_Master
     {
         private static void Main(string[] args)
         {
-            int[] cofarr = new int[10];
-
-            int NumberOfCoaff = ReadCoaff(cofarr);
+            bool check = true;
+            while (check == true)
+            {
+                int valueofx = 0;
+                int final = 0;
+                int[] newcofarr = new int[10];
+                int[] cofarr = new int[10];
+                int[] finalcof = new int[10];
+                Console.ForegroundColor = ConsoleColor.Red;
+                int NumberOfCoaff = ReadCoaff(cofarr);
+                Console.ForegroundColor = ConsoleColor.Green;
+                valueofx = ReadInt(valueofx);
+                final = CalPoli(cofarr, valueofx, newcofarr, final, finalcof);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(final);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("do you want to contine? Y/N ");
+                string str = Console.ReadLine();
+                if ((str == "y") || (str == "Y"))
+                {
+                    check = true;
+                    Console.Clear();
+                }
+                else
+                {
+                    check = false;
+                    Environment.Exit(0);
+                }
+            }
         }
 
         //takes the input
@@ -19,7 +45,7 @@ namespace Polynom_Master
             {
                 Console.Write("enter the coff of X by the power of " + i + " or quit to quit.. ");
                 str = Console.ReadLine();
-                if (str == "quit")
+                if ((str == "quit") || (str == "q"))
                 {
                     return (i);
                 }
@@ -32,25 +58,41 @@ namespace Polynom_Master
         }
 
         //This is the power of of the number
-        public static int NuPow(int input1, int input2)
+        public static int Nupow(int a, int b)
         {
-            int number = 0;
-            for (int i = 0; i < input2; i++)
+            int num = 1;
+            for (int i = 0; i < b; i++)
             {
-                number = input1 * input1;
+                num = a * num;
             }
-            return number;
+            return num;
         }
 
         //takes the x
-        public static int ReadInt(string WhatToPrint)
+        public static int ReadInt(int x)
         {
-            Console.WriteLine(WhatToPrint);
-            return int.Parse(Console.ReadLine());
+            Console.WriteLine("input x value ");
+            x = int.Parse(Console.ReadLine());
+            return (x);
         }
 
-        public static int CalPoli(int[] cofarr, int i, int x)
+        public static int CalPoli(int[] cofarr, int x, int[] newcofarr, int final, int[] finalcof)
         {
+            for (int i = 0; i < cofarr.Length; i++)
+            {
+                newcofarr[i] = Nupow(x, i);
+            }
+
+            for (int i = 0; i < cofarr.Length; i++)
+            {
+                finalcof[i] = cofarr[i] * newcofarr[i];
+            }
+
+            for (int i = 0; i < cofarr.Length; i++)
+            {
+                final += finalcof[i];
+            }
+            return (final);
         }
     }
 }
